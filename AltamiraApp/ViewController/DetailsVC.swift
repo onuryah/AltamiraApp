@@ -16,7 +16,7 @@ class DetailsVC: UIViewController {
     @IBOutlet weak var voteCountLabelField: UILabel!
     @IBOutlet weak var overViewLabelField: UILabel!
     @IBOutlet weak var movieImageView: UIImageView!
-    var savedArray = [Int]()
+    private var savedArray = [Int]()
     private var selectedMovie : Result?
     
     
@@ -25,12 +25,8 @@ class DetailsVC: UIViewController {
         backAndSaveButtonAdded()
         synchronizeChosenMovie()
         fixSaveButton()
-        
     }
     
-
-
-        
     fileprivate func backAndSaveButtonAdded() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "< Cancel", style: UIBarButtonItem.Style.plain, target: self, action: #selector(goBack))
     }
@@ -63,7 +59,6 @@ class DetailsVC: UIViewController {
             }
             voteAvarageLabelField.text = "Puan Ortalaması: "+String(selectedMovie.voteAverage)
             voteCountLabelField.text = "Puanlama Sayısı: "+String(selectedMovie.voteCount)
-            
         }
     }
     @objc func saveButtonClicked(){
@@ -75,8 +70,15 @@ class DetailsVC: UIViewController {
     
     @objc func unLikeClicked(){
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Like", style: UIBarButtonItem.Style.plain, target: self, action: #selector(saveButtonClicked))
-        if let selectedMovie = selectedMovie {
-            CoreDataManagement.deleteData(id: selectedMovie.id)
+        for i in self.savedArray{
+            if let id = self.selectedMovie?.id{
+                if id == i{
+                    if let index = self.savedArray.firstIndex(of: id) {
+                        CoreDataManagement.deleteData(id: id)
+                        self.savedArray.remove(at: index)
+                    }
+                }
+            }
         }
     }
     
@@ -95,4 +97,44 @@ class DetailsVC: UIViewController {
         }
 
     }
+    
+    func objectSettings(){
+        self.selectedMovie = UserSingleton.chosenMovie
+        navigationItem.title = self.selectedMovie?.title
+        overViewLabelField.lineBreakMode = .byWordWrapping
+        overViewLabelField.sizeToFit()
+        if let selectedMovie = selectedMovie {
+            if let posterUrl = self.selectedMovie?.posterPath{
+                let url = "https://image.tmdb.org/t/p/w342"+posterUrl
+                movieImageView.load(url: url)
+            }
+            
+            orginalTitleLabelField.text = "Orjinal İsim: "+selectedMovie.originalTitle
+            overViewLabelField.text = selectedMovie.overview
+            if let realise = selectedMovie.releaseDate{
+                realiseLabelField.text = "Yapım Tarihi: "+realise
+            }
+            popularityLabelField.text = "Popülerlik: "+String(selectedMovie.popularity)
+            if String(selectedMovie.adult) == "true"{
+                adultLabelField.text = "Yetişkinler İçindir."
+            }else{
+                adultLabelField.text = "Genel İzleyici Kitlesi"
+            }
+            voteAvarageLabelField.text = "Puan Ortalaması: "+String(selectedMovie.voteAverage)
+            voteCountLabelField.text = "Puanlama Sayısı: "+String(selectedMovie.voteCount)
+            
+        }
+    }
 }
+
+/*
+ navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Like", style: UIBarButtonItem.Style.plain, target: self, action: #selector(saveButtonClicked))
+ if let selectedMovie = selectedMovie {
+     for i in self.savedArray{
+             if let index = self.savedArray.firstIndex(of: i) {
+                 self.savedArray.remove(at: index)
+                 CoreDataManagement.deleteData(id: selectedMovie.id)
+             }
+ 
+}
+ */

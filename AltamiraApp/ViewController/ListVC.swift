@@ -9,29 +9,23 @@ import UIKit
 import CoreData
 
 class ListVC: UIViewController {
-
-    
     @IBOutlet weak var tableView: UITableView!
-    var dataArray =  [Result]()
+    private var dataArray =  [Result]()
+    private var savedArray = [Int]()
+    private let searchController = UISearchController()
     var offSet = 1
-    var indexObserver = 0
-    var savedArray = [Int]()
-    let searchController = UISearchController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchData()
         setDelegates()
-        navigationItem.searchController = searchController
-        
+        addSearchbar()
     }
     
     override func viewWillAppear(_ animated: Bool) {
        super.viewWillAppear(animated)
        tableView.reloadData()
    }
-
-
 }
 
 extension ListVC: UITableViewDelegate,UITableViewDataSource,UISearchResultsUpdating{
@@ -41,11 +35,56 @@ extension ListVC: UITableViewDelegate,UITableViewDataSource,UISearchResultsUpdat
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! Cell
+        itemsInCell(cell: cell, indexPath: indexPath)
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        UserSingleton.chosenMovie = self.dataArray[indexPath.row]
+        performSegue(withIdentifier: "movieDetails", sender: nil)
+    }
+    
+    fileprivate func setDelegates(){
+        tableView.delegate = self
+        tableView.dataSource = self
+    }
+    
+    fileprivate func fetchData(){
+        let url = UrlClass().baseUrl+UrlClass().moviesUrl+UrlClass().key+"\(UrlClass().firstPageNumber)"
+        Webservice.fetchData(urlString: url, tableView: tableView, model: Model.self) { datas in
+            self.dataArray = datas.results
+        }
+    }
+    
+    @objc func tapped(sender: UIButton){
+        let indexPath = IndexPath(row: sender.tag, section: 0)
+        let cell = self.tableView.cellForRow(at: IndexPath(row: sender.tag, section: 0)) as! Cell
+        tappedSettings(indexPath: indexPath, cell: cell)
+        tableView.reloadData()
+    }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let text = searchController.searchBar.text else{return}
+        let url = UrlClass().baseUrl+UrlClass().searchUrl+"\(text)"
+        Webservice.fetchData(urlString: url, tableView: tableView, model: Model.self) { data in
+            self.dataArray = data.results
+        }
+        if text == ""{
+            fetchData()
+        }
+    }
+    
+    fileprivate func addSearchbar(){
+        navigationItem.searchController = searchController
+        searchController.searchResultsUpdater = self
+    }
+    
+    fileprivate func itemsInCell(cell: Cell, indexPath: IndexPath){
+        
         cell.nameLabelField.text = self.dataArray[indexPath.row].originalTitle
         cell.likeButton.tag = indexPath.row
         cell.likeButton.addTarget(self, action: #selector(tapped), for: .touchUpInside)
-        
-        
+    
         CoreDataManagement.retrieveValues() { saved in
             self.savedArray.removeAll(keepingCapacity: false)
             self.savedArray = saved
@@ -57,42 +96,22 @@ extension ListVC: UITableViewDelegate,UITableViewDataSource,UISearchResultsUpdat
             }
         }
         
-        
-        self.indexObserver = indexPath.row
+        let indexObserver = indexPath.row
         if indexObserver == self.dataArray.count - 2{
                 offSet = offSet + 1
-                let url = "https://api.themoviedb.org/3/movie/popular?language=tr-TR&api_key=3a70be5987b4f1919dafae3d8c738cf5&page="+"\(offSet)"
+            let url = UrlClass().baseUrl+UrlClass().moviesUrl+UrlClass().key+"\(offSet)"
+            print(offSet)
             Webservice.fetchData(urlString: url, tableView: self.tableView, model: Model.self) { datas in
                         datas.results.forEach { extraData in
                             self.dataArray.append(extraData)
-                        }
+                    }
                 }
             }
-        return cell
-    }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        UserSingleton.chosenMovie = self.dataArray[indexPath.row]
-        performSegue(withIdentifier: "movieDetails", sender: nil)
     }
     
-    fileprivate func setDelegates(){
-        tableView.delegate = self
-        tableView.dataSource = self
-        searchController.searchResultsUpdater = self
-        tableView.reloadData()
-    }
     
-    func fetchData(){
-        let url = "https://api.themoviedb.org/3/movie/popular?language=tr-TR&api_key=3a70be5987b4f1919dafae3d8c738cf5&page=1"
-        Webservice.fetchData(urlString: url, tableView: tableView, model: Model.self) { datas in
-            self.dataArray = datas.results
-        }
-    }
-    
-    @objc func tapped(sender: UIButton){
-        let indexpath = IndexPath(row: sender.tag, section: 0)
-        let cell = self.tableView.cellForRow(at: IndexPath(row: sender.tag, section: 0)) as! Cell
-        let id = self.dataArray[indexpath.row].id
+    fileprivate func tappedSettings(indexPath : IndexPath, cell: Cell){
+        let id = self.dataArray[indexPath.row].id
         if cell.heartImageView.image == UIImage(named: "heart"){
             CoreDataManagement.save(value: id)
         }else if cell.heartImageView.image == UIImage(named: "redHeart"){
@@ -105,20 +124,6 @@ extension ListVC: UITableViewDelegate,UITableViewDataSource,UISearchResultsUpdat
                 }
             }
         }
-        tableView.reloadData()
     }
-    
-    func updateSearchResults(for searchController: UISearchController) {
-        guard let text = searchController.searchBar.text else{return}
-        let url = "https://api.themoviedb.org/3/search/movie?api_key=3a70be5987b4f1919dafae3d8c738cf5&query="+"\(text)"
-        Webservice.fetchData(urlString: url, tableView: tableView, model: Model.self) { data in
-            self.dataArray = data.results
-        }
-    }
-    
-
-    
-    
-    
 }
 
