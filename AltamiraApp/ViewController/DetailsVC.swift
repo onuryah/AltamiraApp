@@ -67,10 +67,9 @@ class DetailsVC: UIViewController {
             self.savedArray = saved
         }
         savedArray.forEach { saved in
+            
             if saved == selectedMovie?.id{
                 navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Liked", style: UIBarButtonItem.Style.plain, target: self, action: #selector(unLikeClicked))
-            }else{
-                navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Like", style: UIBarButtonItem.Style.plain, target: self, action: #selector(saveButtonClicked))
             }
         }
 
