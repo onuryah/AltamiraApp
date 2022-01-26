@@ -41,7 +41,7 @@ extension ListVC: UITableViewDelegate,UITableViewDataSource{
         cell.likeButton.addTarget(self, action: #selector(tapped), for: .touchUpInside)
         
         
-        CoreDataManagement.retrieveValues(tableView: tableView) { saved in
+        CoreDataManagement.retrieveValues() { saved in
             self.savedArray.removeAll(keepingCapacity: false)
             self.savedArray = saved
         }

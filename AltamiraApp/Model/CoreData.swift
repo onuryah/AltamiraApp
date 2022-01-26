@@ -26,7 +26,7 @@ struct CoreDataManagement{
         }
     }
     
-    static func retrieveValues(tableView: UITableView,compilation: @escaping ([Int]) ->()){
+    static func retrieveValues(compilation: @escaping ([Int]) ->()){
         
             var intArray = [Int]()
             if let appDelegate = UIApplication.shared.delegate as? AppDelegate{
@@ -35,7 +35,7 @@ struct CoreDataManagement{
                 fetchRequest.returnsObjectsAsFaults = false
                 do{
                     let results = try context.fetch(fetchRequest)
-                    if results.count > 0 {
+                    
                         
                         for result in results as [NSManagedObject]{
                             
@@ -45,7 +45,7 @@ struct CoreDataManagement{
                                 
                             }
                         }
-                    }
+                    
                 }catch{
                     
                 }

@@ -16,13 +16,15 @@ class DetailsVC: UIViewController {
     @IBOutlet weak var voteCountLabelField: UILabel!
     @IBOutlet weak var overViewLabelField: UILabel!
     @IBOutlet weak var movieImageView: UIImageView!
-    
-    
+    var savedArray = [Int]()
     private var selectedMovie : Result?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         backAndSaveButtonAdded()
         synchronizeChosenMovie()
+        fixSaveButton()
         
     }
     
@@ -31,7 +33,6 @@ class DetailsVC: UIViewController {
         
     fileprivate func backAndSaveButtonAdded() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "< Cancel", style: UIBarButtonItem.Style.plain, target: self, action: #selector(goBack))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: UIBarButtonItem.Style.plain, target: self, action: #selector(saveButtonClicked))
     }
     
     @objc func goBack(){
@@ -67,11 +68,31 @@ class DetailsVC: UIViewController {
     }
     @objc func saveButtonClicked(){
         if let selectedMovie = selectedMovie {
+            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Unlike", style: UIBarButtonItem.Style.plain, target: self, action: #selector(unLikeClicked))
             CoreDataManagement.save(value: selectedMovie.id)
         }
     }
     
+    @objc func unLikeClicked(){
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Like", style: UIBarButtonItem.Style.plain, target: self, action: #selector(saveButtonClicked))
+        if let selectedMovie = selectedMovie {
+            CoreDataManagement.deleteData(id: selectedMovie.id)
+        }
+    }
+    
     private func fixSaveButton(){
-        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Like", style: UIBarButtonItem.Style.plain, target: self, action: #selector(saveButtonClicked))
+        CoreDataManagement.retrieveValues() { saved in
+            self.savedArray.removeAll(keepingCapacity: false)
+            self.savedArray = saved
+        }
+        savedArray.forEach { saved in
+            if saved == selectedMovie?.id{
+                navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Unlike", style: UIBarButtonItem.Style.plain, target: self, action: #selector(unLikeClicked))
+            }else{
+                navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Like", style: UIBarButtonItem.Style.plain, target: self, action: #selector(saveButtonClicked))
+            }
+        }
+
     }
 }
