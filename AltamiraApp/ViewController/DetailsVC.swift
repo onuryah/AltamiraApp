@@ -37,29 +37,7 @@ class DetailsVC: UIViewController {
     
     fileprivate func synchronizeChosenMovie(){
         self.selectedMovie = UserSingleton.chosenMovie
-        navigationItem.title = self.selectedMovie?.title
-        overViewLabelField.lineBreakMode = .byWordWrapping
-        overViewLabelField.sizeToFit()
-        if let selectedMovie = selectedMovie {
-            if let posterUrl = self.selectedMovie?.posterPath{
-                let url = "https://image.tmdb.org/t/p/w342"+posterUrl
-                movieImageView.load(url: url)
-            }
-            
-            orginalTitleLabelField.text = "Orjinal İsim: "+selectedMovie.originalTitle
-            overViewLabelField.text = selectedMovie.overview
-            if let realise = selectedMovie.releaseDate{
-                realiseLabelField.text = "Yapım Tarihi: "+realise
-            }
-            popularityLabelField.text = "Popülerlik: "+String(selectedMovie.popularity)
-            if String(selectedMovie.adult) == "true"{
-                adultLabelField.text = "Yetişkinler İçindir."
-            }else{
-                adultLabelField.text = "Genel İzleyici Kitlesi"
-            }
-            voteAvarageLabelField.text = "Puan Ortalaması: "+String(selectedMovie.voteAverage)
-            voteCountLabelField.text = "Puanlama Sayısı: "+String(selectedMovie.voteCount)
-        }
+        objectSettings()
     }
     @objc func saveButtonClicked(){
         if let selectedMovie = selectedMovie {
@@ -99,7 +77,6 @@ class DetailsVC: UIViewController {
     }
     
     func objectSettings(){
-        self.selectedMovie = UserSingleton.chosenMovie
         navigationItem.title = self.selectedMovie?.title
         overViewLabelField.lineBreakMode = .byWordWrapping
         overViewLabelField.sizeToFit()
@@ -108,7 +85,6 @@ class DetailsVC: UIViewController {
                 let url = "https://image.tmdb.org/t/p/w342"+posterUrl
                 movieImageView.load(url: url)
             }
-            
             orginalTitleLabelField.text = "Orjinal İsim: "+selectedMovie.originalTitle
             overViewLabelField.text = selectedMovie.overview
             if let realise = selectedMovie.releaseDate{
@@ -127,14 +103,4 @@ class DetailsVC: UIViewController {
     }
 }
 
-/*
- navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Like", style: UIBarButtonItem.Style.plain, target: self, action: #selector(saveButtonClicked))
- if let selectedMovie = selectedMovie {
-     for i in self.savedArray{
-             if let index = self.savedArray.firstIndex(of: i) {
-                 self.savedArray.remove(at: index)
-                 CoreDataManagement.deleteData(id: selectedMovie.id)
-             }
- 
-}
- */
+
