@@ -41,7 +41,7 @@ class DetailsVC: UIViewController {
     }
     @objc func saveButtonClicked(){
         if let selectedMovie = selectedMovie {
-            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Unlike", style: UIBarButtonItem.Style.plain, target: self, action: #selector(unLikeClicked))
+            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Liked", style: UIBarButtonItem.Style.plain, target: self, action: #selector(unLikeClicked))
             CoreDataManagement.save(value: selectedMovie.id)
         }
     }
@@ -68,7 +68,7 @@ class DetailsVC: UIViewController {
         }
         savedArray.forEach { saved in
             if saved == selectedMovie?.id{
-                navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Unlike", style: UIBarButtonItem.Style.plain, target: self, action: #selector(unLikeClicked))
+                navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Liked", style: UIBarButtonItem.Style.plain, target: self, action: #selector(unLikeClicked))
             }else{
                 navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Like", style: UIBarButtonItem.Style.plain, target: self, action: #selector(saveButtonClicked))
             }
@@ -92,9 +92,9 @@ class DetailsVC: UIViewController {
             }
             popularityLabelField.text = "Popülerlik: "+String(selectedMovie.popularity)
             if String(selectedMovie.adult) == "true"{
-                adultLabelField.text = "Yetişkinler İçindir."
+                adultLabelField.text = "Kitle: Yetişkinler içindir."
             }else{
-                adultLabelField.text = "Genel İzleyici Kitlesi"
+                adultLabelField.text = "Kitle: Genel İzleyici Kitlesi içindir"
             }
             voteAvarageLabelField.text = "Puan Ortalaması: "+String(selectedMovie.voteAverage)
             voteCountLabelField.text = "Puanlama Sayısı: "+String(selectedMovie.voteCount)
