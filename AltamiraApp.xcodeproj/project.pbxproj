@@ -7,23 +7,39 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A0C88BE279FEF98005F5A87 /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0C88BD279FEF98005F5A87 /* Cell.swift */; };
+		4A0C88C0279FF769005F5A87 /* Singleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0C88BF279FF769005F5A87 /* Singleton.swift */; };
+		4A0C88C3279FF8E8005F5A87 /* DetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0C88C2279FF8E8005F5A87 /* DetailsVC.swift */; };
+		4A0C88C527A01DD5005F5A87 /* ExtensionImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0C88C427A01DD5005F5A87 /* ExtensionImageView.swift */; };
+		4A0C88C827A06033005F5A87 /* CoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4A0C88C627A06033005F5A87 /* CoreData.xcdatamodeld */; };
+		4A0C88CB27A07030005F5A87 /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0C88CA27A07030005F5A87 /* CoreData.swift */; };
 		4AE0FDA3279F661C0089B6E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE0FDA2279F661C0089B6E9 /* AppDelegate.swift */; };
 		4AE0FDA5279F661C0089B6E9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE0FDA4279F661C0089B6E9 /* SceneDelegate.swift */; };
-		4AE0FDA7279F661C0089B6E9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE0FDA6279F661C0089B6E9 /* ViewController.swift */; };
+		4AE0FDA7279F661C0089B6E9 /* ListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE0FDA6279F661C0089B6E9 /* ListVC.swift */; };
 		4AE0FDAA279F661C0089B6E9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4AE0FDA8279F661C0089B6E9 /* Main.storyboard */; };
 		4AE0FDAC279F661D0089B6E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4AE0FDAB279F661D0089B6E9 /* Assets.xcassets */; };
 		4AE0FDAF279F661D0089B6E9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4AE0FDAD279F661D0089B6E9 /* LaunchScreen.storyboard */; };
+		4AE0FDB9279F66D90089B6E9 /* ModelClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE0FDB8279F66D90089B6E9 /* ModelClass.swift */; };
+		4AE0FDBB279F670C0089B6E9 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE0FDBA279F670C0089B6E9 /* WebService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4A0C88BD279FEF98005F5A87 /* Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
+		4A0C88BF279FF769005F5A87 /* Singleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Singleton.swift; sourceTree = "<group>"; };
+		4A0C88C2279FF8E8005F5A87 /* DetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsVC.swift; sourceTree = "<group>"; };
+		4A0C88C427A01DD5005F5A87 /* ExtensionImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionImageView.swift; sourceTree = "<group>"; };
+		4A0C88C727A06033005F5A87 /* CoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreData.xcdatamodel; sourceTree = "<group>"; };
+		4A0C88CA27A07030005F5A87 /* CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
 		4AE0FD9F279F661C0089B6E9 /* AltamiraApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AltamiraApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AE0FDA2279F661C0089B6E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4AE0FDA4279F661C0089B6E9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		4AE0FDA6279F661C0089B6E9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4AE0FDA6279F661C0089B6E9 /* ListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListVC.swift; sourceTree = "<group>"; };
 		4AE0FDA9279F661C0089B6E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4AE0FDAB279F661D0089B6E9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4AE0FDAE279F661D0089B6E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4AE0FDB0279F661D0089B6E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4AE0FDB8279F66D90089B6E9 /* ModelClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelClass.swift; sourceTree = "<group>"; };
+		4AE0FDBA279F670C0089B6E9 /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +53,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4A0C88BC279FEF87005F5A87 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4A0C88BD279FEF98005F5A87 /* Cell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4A0C88C1279FF89B005F5A87 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4AE0FDA6279F661C0089B6E9 /* ListVC.swift */,
+				4A0C88C2279FF8E8005F5A87 /* DetailsVC.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		4AE0FD96279F661C0089B6E9 = {
 			isa = PBXGroup;
 			children = (
@@ -56,15 +89,38 @@
 		4AE0FDA1279F661C0089B6E9 /* AltamiraApp */ = {
 			isa = PBXGroup;
 			children = (
-				4AE0FDA2279F661C0089B6E9 /* AppDelegate.swift */,
-				4AE0FDA4279F661C0089B6E9 /* SceneDelegate.swift */,
-				4AE0FDA6279F661C0089B6E9 /* ViewController.swift */,
+				4AE0FDB7279F66B10089B6E9 /* Delegates */,
+				4AE0FDB6279F66440089B6E9 /* Model */,
+				4A0C88BC279FEF87005F5A87 /* View */,
+				4A0C88C1279FF89B005F5A87 /* ViewController */,
 				4AE0FDA8279F661C0089B6E9 /* Main.storyboard */,
 				4AE0FDAB279F661D0089B6E9 /* Assets.xcassets */,
 				4AE0FDAD279F661D0089B6E9 /* LaunchScreen.storyboard */,
 				4AE0FDB0279F661D0089B6E9 /* Info.plist */,
+				4A0C88C627A06033005F5A87 /* CoreData.xcdatamodeld */,
 			);
 			path = AltamiraApp;
+			sourceTree = "<group>";
+		};
+		4AE0FDB6279F66440089B6E9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4A0C88CA27A07030005F5A87 /* CoreData.swift */,
+				4AE0FDBA279F670C0089B6E9 /* WebService.swift */,
+				4AE0FDB8279F66D90089B6E9 /* ModelClass.swift */,
+				4A0C88BF279FF769005F5A87 /* Singleton.swift */,
+				4A0C88C427A01DD5005F5A87 /* ExtensionImageView.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4AE0FDB7279F66B10089B6E9 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				4AE0FDA4279F661C0089B6E9 /* SceneDelegate.swift */,
+				4AE0FDA2279F661C0089B6E9 /* AppDelegate.swift */,
+			);
+			path = Delegates;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,9 +194,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4AE0FDA7279F661C0089B6E9 /* ViewController.swift in Sources */,
+				4AE0FDA7279F661C0089B6E9 /* ListVC.swift in Sources */,
+				4A0C88C3279FF8E8005F5A87 /* DetailsVC.swift in Sources */,
+				4A0C88C827A06033005F5A87 /* CoreData.xcdatamodeld in Sources */,
+				4A0C88C0279FF769005F5A87 /* Singleton.swift in Sources */,
+				4A0C88CB27A07030005F5A87 /* CoreData.swift in Sources */,
 				4AE0FDA3279F661C0089B6E9 /* AppDelegate.swift in Sources */,
+				4AE0FDB9279F66D90089B6E9 /* ModelClass.swift in Sources */,
+				4AE0FDBB279F670C0089B6E9 /* WebService.swift in Sources */,
+				4A0C88C527A01DD5005F5A87 /* ExtensionImageView.swift in Sources */,
 				4AE0FDA5279F661C0089B6E9 /* SceneDelegate.swift in Sources */,
+				4A0C88BE279FEF98005F5A87 /* Cell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,6 +424,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		4A0C88C627A06033005F5A87 /* CoreData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				4A0C88C727A06033005F5A87 /* CoreData.xcdatamodel */,
+			);
+			currentVersion = 4A0C88C727A06033005F5A87 /* CoreData.xcdatamodel */;
+			path = CoreData.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 4AE0FD97279F661C0089B6E9 /* Project object */;
 }
