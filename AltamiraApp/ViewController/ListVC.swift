@@ -13,7 +13,7 @@ class ListVC: UIViewController {
     private var dataArray =  [Result]()
     private var savedArray = [Int]()
     private let searchController = UISearchController()
-    var offSet = 1
+    private var offSet = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -100,7 +100,6 @@ extension ListVC: UITableViewDelegate,UITableViewDataSource,UISearchResultsUpdat
         if indexObserver == self.dataArray.count - 2{
                 offSet = offSet + 1
             let url = UrlClass().baseUrl+UrlClass().moviesUrl+UrlClass().key+"\(offSet)"
-            print(offSet)
             Webservice.fetchData(urlString: url, tableView: self.tableView, model: Model.self) { datas in
                         datas.results.forEach { extraData in
                             self.dataArray.append(extraData)
