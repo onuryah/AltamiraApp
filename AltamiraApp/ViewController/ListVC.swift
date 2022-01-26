@@ -9,16 +9,21 @@ import UIKit
 import CoreData
 
 class ListVC: UIViewController {
+
+    
     @IBOutlet weak var tableView: UITableView!
     var dataArray =  [Result]()
     var offSet = 1
     var indexObserver = 0
     var savedArray = [Int]()
+    let searchController = UISearchController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchData()
         setDelegates()
+        navigationItem.searchController = searchController
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -29,7 +34,7 @@ class ListVC: UIViewController {
 
 }
 
-extension ListVC: UITableViewDelegate,UITableViewDataSource{
+extension ListVC: UITableViewDelegate,UITableViewDataSource,UISearchResultsUpdating{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.dataArray.count
     }
@@ -73,6 +78,7 @@ extension ListVC: UITableViewDelegate,UITableViewDataSource{
     fileprivate func setDelegates(){
         tableView.delegate = self
         tableView.dataSource = self
+        searchController.searchResultsUpdater = self
         tableView.reloadData()
     }
     
@@ -101,5 +107,18 @@ extension ListVC: UITableViewDelegate,UITableViewDataSource{
         }
         tableView.reloadData()
     }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let text = searchController.searchBar.text else{return}
+        let url = "https://api.themoviedb.org/3/search/movie?api_key=3a70be5987b4f1919dafae3d8c738cf5&query="+"\(text)"
+        Webservice.fetchData(urlString: url, tableView: tableView, model: Model.self) { data in
+            self.dataArray = data.results
+        }
+    }
+    
+
+    
+    
+    
 }
 

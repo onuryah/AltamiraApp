@@ -13,6 +13,7 @@
 		4A0C88C527A01DD5005F5A87 /* ExtensionImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0C88C427A01DD5005F5A87 /* ExtensionImageView.swift */; };
 		4A0C88C827A06033005F5A87 /* CoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4A0C88C627A06033005F5A87 /* CoreData.xcdatamodeld */; };
 		4A0C88CB27A07030005F5A87 /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0C88CA27A07030005F5A87 /* CoreData.swift */; };
+		4A94255927A0E218005698C4 /* UrlClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A94255827A0E218005698C4 /* UrlClass.swift */; };
 		4AE0FDA3279F661C0089B6E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE0FDA2279F661C0089B6E9 /* AppDelegate.swift */; };
 		4AE0FDA5279F661C0089B6E9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE0FDA4279F661C0089B6E9 /* SceneDelegate.swift */; };
 		4AE0FDA7279F661C0089B6E9 /* ListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE0FDA6279F661C0089B6E9 /* ListVC.swift */; };
@@ -30,6 +31,7 @@
 		4A0C88C427A01DD5005F5A87 /* ExtensionImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionImageView.swift; sourceTree = "<group>"; };
 		4A0C88C727A06033005F5A87 /* CoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreData.xcdatamodel; sourceTree = "<group>"; };
 		4A0C88CA27A07030005F5A87 /* CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
+		4A94255827A0E218005698C4 /* UrlClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlClass.swift; sourceTree = "<group>"; };
 		4AE0FD9F279F661C0089B6E9 /* AltamiraApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AltamiraApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AE0FDA2279F661C0089B6E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4AE0FDA4279F661C0089B6E9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -70,6 +72,15 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
+		4A94255727A0E1F9005698C4 /* DataClass */ = {
+			isa = PBXGroup;
+			children = (
+				4AE0FDB8279F66D90089B6E9 /* ModelClass.swift */,
+				4A94255827A0E218005698C4 /* UrlClass.swift */,
+			);
+			path = DataClass;
+			sourceTree = "<group>";
+		};
 		4AE0FD96279F661C0089B6E9 = {
 			isa = PBXGroup;
 			children = (
@@ -105,9 +116,9 @@
 		4AE0FDB6279F66440089B6E9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4A94255727A0E1F9005698C4 /* DataClass */,
 				4A0C88CA27A07030005F5A87 /* CoreData.swift */,
 				4AE0FDBA279F670C0089B6E9 /* WebService.swift */,
-				4AE0FDB8279F66D90089B6E9 /* ModelClass.swift */,
 				4A0C88BF279FF769005F5A87 /* Singleton.swift */,
 				4A0C88C427A01DD5005F5A87 /* ExtensionImageView.swift */,
 			);
@@ -196,6 +207,7 @@
 			files = (
 				4AE0FDA7279F661C0089B6E9 /* ListVC.swift in Sources */,
 				4A0C88C3279FF8E8005F5A87 /* DetailsVC.swift in Sources */,
+				4A94255927A0E218005698C4 /* UrlClass.swift in Sources */,
 				4A0C88C827A06033005F5A87 /* CoreData.xcdatamodeld in Sources */,
 				4A0C88C0279FF769005F5A87 /* Singleton.swift in Sources */,
 				4A0C88CB27A07030005F5A87 /* CoreData.swift in Sources */,
