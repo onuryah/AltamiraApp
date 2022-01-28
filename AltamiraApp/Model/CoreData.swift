@@ -20,11 +20,14 @@ struct CoreDataManagement{
             
             do{
                 try context.save()
-            }catch{}
+            }catch{
+                
+            }
         }
     }
     
     static func retrieveValues(compilation: @escaping ([Int]) ->()){
+        
             var intArray = [Int]()
             if let appDelegate = UIApplication.shared.delegate as? AppDelegate{
                 let context = appDelegate.persistentContainer.viewContext
@@ -32,17 +35,24 @@ struct CoreDataManagement{
                 fetchRequest.returnsObjectsAsFaults = false
                 do{
                     let results = try context.fetch(fetchRequest)
+                    
                         
                         for result in results as [NSManagedObject]{
                             
                             if let id = result.value(forKey: "id") as? Int{
                                 intArray.append(id)
                                 compilation(intArray)
+                                
                             }
                         }
-                }catch{}
-        }
+                    
+                }catch{
+                    
+                }
+            }
  }
+    
+    
     
     
     static func deleteData(id: Int){
@@ -57,12 +67,16 @@ struct CoreDataManagement{
                     if result.id == id{
                         context.delete(result)
                     }
+                            
+                            
                             do {
                                 try context.save()
                                 
                             } catch {
                             }
+                
             }
+            
         }
 }
 }

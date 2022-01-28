@@ -18,7 +18,7 @@ class DetailsVC: UIViewController {
     @IBOutlet weak var movieImageView: UIImageView!
     private var savedArray = [Int]()
     private var selectedMovie : Result?
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
