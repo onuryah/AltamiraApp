@@ -21,16 +21,13 @@ class Webservice{
                 }else if data != nil {
                     guard let data = data else {return}
                     do{
-                        
-                        
                             let data = try JSONDecoder().decode(model, from: data)
                         compilation(data)
                         tableView.reloadData()
-                    }catch{
-                    }
-            }
-            }
+                    }catch{}
+           }
         }
+     }
         .resume()
-    }
+  }
 }

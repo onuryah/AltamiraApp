@@ -50,10 +50,13 @@ extension ListVC: UITableViewDelegate,UITableViewDataSource,UISearchResultsUpdat
     }
     
     fileprivate func fetchData(){
-        let url = UrlClass().baseUrl+UrlClass().moviesUrl+UrlClass().key+"\(UrlClass().firstPageNumber)"
+        let url = UrlClass().baseUrl+UrlClass().moviesUrl+UrlClass().key+"\(offSet)"
         Webservice.fetchData(urlString: url, tableView: tableView, model: Model.self) { datas in
-            self.dataArray = datas.results
+            for data in datas.results{
+                self.dataArray.append(data)
+            }
         }
+        offSet = offSet+1
     }
     
     @objc func tapped(sender: UIButton){
@@ -98,16 +101,9 @@ extension ListVC: UITableViewDelegate,UITableViewDataSource,UISearchResultsUpdat
         
         let indexObserver = indexPath.row
         if indexObserver == self.dataArray.count - 2{
-                offSet = offSet + 1
-            let url = UrlClass().baseUrl+UrlClass().moviesUrl+UrlClass().key+"\(offSet)"
-            Webservice.fetchData(urlString: url, tableView: self.tableView, model: Model.self) { datas in
-                        datas.results.forEach { extraData in
-                            self.dataArray.append(extraData)
-                    }
-                }
+            fetchData()
             }
     }
-    
     
     fileprivate func tappedSettings(indexPath : IndexPath, cell: Cell){
         let id = self.dataArray[indexPath.row].id
